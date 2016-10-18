@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A03008B1DB6365C00D909AC /* ctest.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A03008A1DB6365C00D909AC /* ctest.c */; };
+		3A03008F1DB6E2CC00D909AC /* ctest_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A03008D1DB6E2CC00D909AC /* ctest_c.c */; };
+		3A3E11551DB6206200075808 /* audioio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11421DB6206200075808 /* audioio.cpp */; };
+		3A3E11561DB6206200075808 /* cheaptrick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11441DB6206200075808 /* cheaptrick.cpp */; };
+		3A3E11571DB6206200075808 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11451DB6206200075808 /* common.cpp */; };
+		3A3E115A1DB6206200075808 /* d4c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E114A1DB6206200075808 /* d4c.cpp */; };
+		3A3E115B1DB6206200075808 /* dio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E114B1DB6206200075808 /* dio.cpp */; };
+		3A3E115C1DB6206200075808 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E114C1DB6206200075808 /* fft.cpp */; };
+		3A3E115D1DB6206200075808 /* matlabfunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E114D1DB6206200075808 /* matlabfunctions.cpp */; };
+		3A3E115E1DB6206200075808 /* stonemask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E114F1DB6206200075808 /* stonemask.cpp */; };
+		3A3E115F1DB6206200075808 /* synthesis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11501DB6206200075808 /* synthesis.cpp */; };
+		3A3E11601DB6206200075808 /* synthesisrealtime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11511DB6206200075808 /* synthesisrealtime.cpp */; };
+		3A3E11611DB6206200075808 /* vaiueo2d.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3A3E11521DB6206200075808 /* vaiueo2d.wav */; };
+		3A3E11621DB6206200075808 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11531DB6206200075808 /* world.cpp */; };
 		3A543EB01DB6197000AD1C0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */; };
 		3A543EB21DB6197000AD1C0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A543EB11DB6197000AD1C0F /* ViewController.swift */; };
 		3A543EB51DB6197000AD1C0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A543EB31DB6197000AD1C0F /* Main.storyboard */; };
@@ -15,6 +29,36 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0300891DB6365C00D909AC /* ctest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctest.h; sourceTree = "<group>"; };
+		3A03008A1DB6365C00D909AC /* ctest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctest.c; sourceTree = "<group>"; };
+		3A03008C1DB6368900D909AC /* _Sound_Stone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "_Sound_Stone-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A03008D1DB6E2CC00D909AC /* ctest_c.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctest_c.c; sourceTree = "<group>"; };
+		3A03008E1DB6E2CC00D909AC /* ctest_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctest_c.h; sourceTree = "<group>"; };
+		3A3E11371DB6204100075808 /* cheaptrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cheaptrick.h; sourceTree = "<group>"; };
+		3A3E11381DB6204100075808 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		3A3E11391DB6204100075808 /* constantnumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constantnumbers.h; sourceTree = "<group>"; };
+		3A3E113A1DB6204100075808 /* d4c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = d4c.h; sourceTree = "<group>"; };
+		3A3E113B1DB6204100075808 /* dio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dio.h; sourceTree = "<group>"; };
+		3A3E113C1DB6204100075808 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
+		3A3E113D1DB6204100075808 /* macrodefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macrodefinitions.h; sourceTree = "<group>"; };
+		3A3E113E1DB6204100075808 /* matlabfunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matlabfunctions.h; sourceTree = "<group>"; };
+		3A3E113F1DB6204100075808 /* stonemask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stonemask.h; sourceTree = "<group>"; };
+		3A3E11401DB6204100075808 /* synthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = synthesis.h; sourceTree = "<group>"; };
+		3A3E11411DB6204100075808 /* synthesisrealtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = synthesisrealtime.h; sourceTree = "<group>"; };
+		3A3E11421DB6206200075808 /* audioio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audioio.cpp; sourceTree = "<group>"; };
+		3A3E11431DB6206200075808 /* audioio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audioio.h; sourceTree = "<group>"; };
+		3A3E11441DB6206200075808 /* cheaptrick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cheaptrick.cpp; sourceTree = "<group>"; };
+		3A3E11451DB6206200075808 /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		3A3E114A1DB6206200075808 /* d4c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = d4c.cpp; sourceTree = "<group>"; };
+		3A3E114B1DB6206200075808 /* dio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dio.cpp; sourceTree = "<group>"; };
+		3A3E114C1DB6206200075808 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
+		3A3E114D1DB6206200075808 /* matlabfunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matlabfunctions.cpp; sourceTree = "<group>"; };
+		3A3E114F1DB6206200075808 /* stonemask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stonemask.cpp; sourceTree = "<group>"; };
+		3A3E11501DB6206200075808 /* synthesis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synthesis.cpp; sourceTree = "<group>"; };
+		3A3E11511DB6206200075808 /* synthesisrealtime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synthesisrealtime.cpp; sourceTree = "<group>"; };
+		3A3E11521DB6206200075808 /* vaiueo2d.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = vaiueo2d.wav; sourceTree = "<group>"; };
+		3A3E11531DB6206200075808 /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
+		3A3E11541DB6206200075808 /* world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = world.h; sourceTree = "<group>"; };
 		3A543EAC1DB6197000AD1C0F /* _Sound_Stone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _Sound_Stone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A543EB11DB6197000AD1C0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +79,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A3E11361DB6204100075808 /* world */ = {
+			isa = PBXGroup;
+			children = (
+				3A3E11371DB6204100075808 /* cheaptrick.h */,
+				3A3E11381DB6204100075808 /* common.h */,
+				3A3E11391DB6204100075808 /* constantnumbers.h */,
+				3A3E113A1DB6204100075808 /* d4c.h */,
+				3A3E113B1DB6204100075808 /* dio.h */,
+				3A3E113C1DB6204100075808 /* fft.h */,
+				3A3E113D1DB6204100075808 /* macrodefinitions.h */,
+				3A3E113E1DB6204100075808 /* matlabfunctions.h */,
+				3A3E113F1DB6204100075808 /* stonemask.h */,
+				3A3E11401DB6204100075808 /* synthesis.h */,
+				3A3E11411DB6204100075808 /* synthesisrealtime.h */,
+			);
+			path = world;
+			sourceTree = "<group>";
+		};
 		3A543EA31DB6197000AD1C0F = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +116,32 @@
 		3A543EAE1DB6197000AD1C0F /* _Sound_Stone */ = {
 			isa = PBXGroup;
 			children = (
+				3A03008C1DB6368900D909AC /* _Sound_Stone-Bridging-Header.h */,
+				3A3E11361DB6204100075808 /* world */,
 				3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */,
 				3A543EB11DB6197000AD1C0F /* ViewController.swift */,
 				3A543EB31DB6197000AD1C0F /* Main.storyboard */,
+				3A03008D1DB6E2CC00D909AC /* ctest_c.c */,
+				3A03008E1DB6E2CC00D909AC /* ctest_c.h */,
+				3A0300891DB6365C00D909AC /* ctest.h */,
+				3A03008A1DB6365C00D909AC /* ctest.c */,
 				3A543EB61DB6197000AD1C0F /* Assets.xcassets */,
 				3A543EB81DB6197000AD1C0F /* LaunchScreen.storyboard */,
 				3A543EBB1DB6197000AD1C0F /* Info.plist */,
+				3A3E11421DB6206200075808 /* audioio.cpp */,
+				3A3E11431DB6206200075808 /* audioio.h */,
+				3A3E11441DB6206200075808 /* cheaptrick.cpp */,
+				3A3E11451DB6206200075808 /* common.cpp */,
+				3A3E114A1DB6206200075808 /* d4c.cpp */,
+				3A3E114B1DB6206200075808 /* dio.cpp */,
+				3A3E114C1DB6206200075808 /* fft.cpp */,
+				3A3E114D1DB6206200075808 /* matlabfunctions.cpp */,
+				3A3E114F1DB6206200075808 /* stonemask.cpp */,
+				3A3E11501DB6206200075808 /* synthesis.cpp */,
+				3A3E11511DB6206200075808 /* synthesisrealtime.cpp */,
+				3A3E11521DB6206200075808 /* vaiueo2d.wav */,
+				3A3E11531DB6206200075808 /* world.cpp */,
+				3A3E11541DB6206200075808 /* world.h */,
 			);
 			path = _Sound_Stone;
 			sourceTree = "<group>";
@@ -97,6 +179,7 @@
 					3A543EAB1DB6197000AD1C0F = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = XBX9D3R87M;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -127,6 +210,7 @@
 				3A543EBA1DB6197000AD1C0F /* LaunchScreen.storyboard in Resources */,
 				3A543EB71DB6197000AD1C0F /* Assets.xcassets in Resources */,
 				3A543EB51DB6197000AD1C0F /* Main.storyboard in Resources */,
+				3A3E11611DB6206200075808 /* vaiueo2d.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +221,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A3E115D1DB6206200075808 /* matlabfunctions.cpp in Sources */,
+				3A3E115B1DB6206200075808 /* dio.cpp in Sources */,
 				3A543EB21DB6197000AD1C0F /* ViewController.swift in Sources */,
+				3A3E115E1DB6206200075808 /* stonemask.cpp in Sources */,
+				3A3E11621DB6206200075808 /* world.cpp in Sources */,
+				3A03008B1DB6365C00D909AC /* ctest.c in Sources */,
+				3A3E115C1DB6206200075808 /* fft.cpp in Sources */,
+				3A3E11561DB6206200075808 /* cheaptrick.cpp in Sources */,
+				3A3E115F1DB6206200075808 /* synthesis.cpp in Sources */,
+				3A3E11601DB6206200075808 /* synthesisrealtime.cpp in Sources */,
+				3A3E11551DB6206200075808 /* audioio.cpp in Sources */,
+				3A3E115A1DB6206200075808 /* d4c.cpp in Sources */,
+				3A03008F1DB6E2CC00D909AC /* ctest_c.c in Sources */,
 				3A543EB01DB6197000AD1C0F /* AppDelegate.swift in Sources */,
+				3A3E11571DB6206200075808 /* common.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,11 +358,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XBX9D3R87M;
 				INFOPLIST_FILE = _Sound_Stone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "OzawaMoriseLab.-Sound-Stone.-Sound-Stone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "_Sound_Stone/_Sound_Stone-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,11 +374,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XBX9D3R87M;
 				INFOPLIST_FILE = _Sound_Stone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "OzawaMoriseLab.-Sound-Stone.-Sound-Stone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "_Sound_Stone/_Sound_Stone-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +404,7 @@
 				3A543EC01DB6197000AD1C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
