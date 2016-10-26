@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A03008B1DB6365C00D909AC /* ctest.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A03008A1DB6365C00D909AC /* ctest.c */; };
 		3A03008F1DB6E2CC00D909AC /* ctest_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A03008D1DB6E2CC00D909AC /* ctest_c.c */; };
 		3A3E11551DB6206200075808 /* audioio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11421DB6206200075808 /* audioio.cpp */; };
 		3A3E11561DB6206200075808 /* cheaptrick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E11441DB6206200075808 /* cheaptrick.cpp */; };
@@ -29,8 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A0300891DB6365C00D909AC /* ctest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctest.h; sourceTree = "<group>"; };
-		3A03008A1DB6365C00D909AC /* ctest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctest.c; sourceTree = "<group>"; };
 		3A03008C1DB6368900D909AC /* _Sound_Stone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "_Sound_Stone-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A03008D1DB6E2CC00D909AC /* ctest_c.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctest_c.c; sourceTree = "<group>"; };
 		3A03008E1DB6E2CC00D909AC /* ctest_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctest_c.h; sourceTree = "<group>"; };
@@ -123,8 +120,6 @@
 				3A543EB31DB6197000AD1C0F /* Main.storyboard */,
 				3A03008D1DB6E2CC00D909AC /* ctest_c.c */,
 				3A03008E1DB6E2CC00D909AC /* ctest_c.h */,
-				3A0300891DB6365C00D909AC /* ctest.h */,
-				3A03008A1DB6365C00D909AC /* ctest.c */,
 				3A543EB61DB6197000AD1C0F /* Assets.xcassets */,
 				3A543EB81DB6197000AD1C0F /* LaunchScreen.storyboard */,
 				3A543EBB1DB6197000AD1C0F /* Info.plist */,
@@ -226,7 +221,6 @@
 				3A543EB21DB6197000AD1C0F /* ViewController.swift in Sources */,
 				3A3E115E1DB6206200075808 /* stonemask.cpp in Sources */,
 				3A3E11621DB6206200075808 /* world.cpp in Sources */,
-				3A03008B1DB6365C00D909AC /* ctest.c in Sources */,
 				3A3E115C1DB6206200075808 /* fft.cpp in Sources */,
 				3A3E11561DB6206200075808 /* cheaptrick.cpp in Sources */,
 				3A3E115F1DB6206200075808 /* synthesis.cpp in Sources */,
@@ -359,11 +353,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = XBX9D3R87M;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = _Sound_Stone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "OzawaMoriseLab.-Sound-Stone.-Sound-Stone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "_Sound_Stone/_Sound_Stone-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -375,7 +372,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = XBX9D3R87M;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = _Sound_Stone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "OzawaMoriseLab.-Sound-Stone.-Sound-Stone";

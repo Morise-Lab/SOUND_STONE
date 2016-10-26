@@ -51,6 +51,11 @@ class ViewController: UIViewController {
             print(error)
         }
     }
+    var myAudioEngine: AVAudioEngine!
+    var myPlayernode: AVAudioPlayerNode!
+    var buffer:AVAudioPCMBuffer!
+    var myFrameCount: AVAudioFrameCount!
+    var format : AVAudioFormat!
     //@IBOutlet weak var slider: UISlider!
     @IBAction func TouchSynthesisButton(_ sender: AnyObject) {
         let toPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)[0] as String
@@ -58,18 +63,40 @@ class ViewController: UIViewController {
         //execute_world(NSURL(fileURLWithPath: Bundle.mainBundle().pathForResource("vaiueo2d", ofType: "wav")!).absoluteString,"output.wav")
         //
         let str = URL(fileURLWithPath: Bundle.main.path(forResource: "vaiueo2d", ofType: "wav")!).absoluteString
-        let arr = str.components(separatedBy: "///")
+        _ = str.components(separatedBy: "///")
         
         
-        let length = Int((world_parameter?.f0_length)!)
-        for i in 0 ..< length{
-            world_parameter!.f0[i] = Double(f0Array[i]!)
-        }
+        //let length = Int((world_parameter?.f0_length)!)
+        //for i in 0 ..< length{
+        //    world_parameter!.f0[i] = Double(f0Array[i]!)
+        //}
         execute_Synthesis(world_parameter!,toPath+"/synthe.wav")
         
         do {
-            musicPlayer = try AVAudioPlayer(contentsOf: URL(string:toPath+"/synthe.wav")!)
-            musicPlayer.play()
+            myAudioEngine = AVAudioEngine()
+            myPlayernode = AVAudioPlayerNode()
+            myPlayernode.volume = 0.5
+            
+            let file = try? AVAudioFile(forReading:NSURL(string:toPath+"/synthe.wav") as! URL)
+            let myFrameCapacity = 30000
+            myFrameCount = 30000
+            
+            buffer = AVAudioPCMBuffer(pcmFormat:file!.processingFormat,frameCapacity:AVAudioFrameCount(myFrameCapacity))
+            
+            
+            try! file!.read(into: buffer,frameCount: myFrameCount)
+            
+            myAudioEngine.attach(myPlayernode)
+            let mixer = myAudioEngine.mainMixerNode
+            myAudioEngine.connect(myPlayernode,to: mixer, format:file!.processingFormat)
+            myPlayernode.scheduleBuffer(buffer,at:nil,options:AVAudioPlayerNodeBufferOptions.interrupts,completionHandler:nil)
+            myAudioEngine.prepare()
+            try! myAudioEngine.start()
+            format = file!.processingFormat
+            myPlayernode.play()
+            //musicPlayer = try AVAudioPlayer(contentsOf: URL(string:toPath+"/synthe.wav")!)
+            //musicPlayer.play()
+            
         }catch let error as NSError {
             //エラーをキャッチした場合
             print(error)
@@ -77,6 +104,7 @@ class ViewController: UIViewController {
     }
     var f0Array:[CGFloat?]!
     var world_parameter : WorldParameters? = nil
+    //var world_synthesizer : UnsafeMutablePointer<WorldSynthesizer>? = nil
     @IBAction func TouchPlayButton(_ sender: AnyObject) {
         print("touched")
         playsound();
@@ -88,7 +116,9 @@ class ViewController: UIViewController {
         let arr = str.components(separatedBy: "///")
         print(str)
         print(toPath)
+        
         world_parameter = execute_world(arr[1],toPath+"/output.wav",-1)
+        Initializer(&world_parameter!,64)
         
         let length = Int((world_parameter?.f0_length)!)
         f0Array = []
@@ -123,9 +153,9 @@ class ViewController: UIViewController {
             lineGraphView.addSubview(graphFrame)
             graphFrame.isUserInteractionEnabled = true
             graphFrame.addGestureRecognizer(UIPanGestureRecognizer(target:self,action: #selector(ViewController.strokeTapped(_:))))
+
             view.addSubview(lineGraphView)
         }else{
-            graphFrame.removeFromSuperview()
             graphFrame.replaceLines(f0Array,strokes2: [stroke1])
             lineGraphView.addSubview(graphFrame)
         }
@@ -139,7 +169,10 @@ class ViewController: UIViewController {
         }
         return max!
     }
+    var resultSynthesis_ptr = UnsafeMutablePointer<Double>.allocate(capacity:64)
+    var buf:AVAudioPCMBuffer!
     func strokeTapped(_ sender:UITapGestureRecognizer){
+        print("strokeTappedddd")
         let tapLocation = sender.location(in: self.view)
         let xAxisMargin = view.frame.width/CGFloat(f0Array.count)
         let index = tapLocation.x/xAxisMargin
@@ -156,6 +189,31 @@ class ViewController: UIViewController {
         }
         drawLineGraph(f0Array)
         
+        let length = Int((world_parameter?.f0_length)!)
+        for i in 0 ..< length{
+            world_parameter!.f0[i] = Double(f0Array[i]!)
+        }
+        
+        
+        //let synthebuffer = AddFrames(&world_parameter!,(world_parameter?.fs)!,
+            //Int32(index),5,resultSynthesis_ptr,64)
+        
+        for i in 0 ..< 64{
+            //buffer?.floatChannelData?.pointee[i] = Float((synthebuffer?[i])!)
+            print((buffer?.floatChannelData?.pointee[i]))
+            print(",")
+        }
+        /*
+        let mixer = myAudioEngine.mainMixerNode
+        myAudioEngine.connect(myPlayernode,to: mixer, format:format)
+        myPlayernode.scheduleBuffer(buffer,at:nil,options:AVAudioPlayerNodeBufferOptions.interrupts,completionHandler:nil)
+        myAudioEngine.prepare()
+        try! myAudioEngine.start()
+        
+        myPlayernode.play()
+ */       
+ //print("AddedFrames")
+        //print(resultSynthesis_ptr[100])
     }
     
 }

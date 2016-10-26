@@ -17,6 +17,7 @@
 #include "world/common.h"
 #include "world/constantnumbers.h"
 #include "world/matlabfunctions.h"
+#include <stdio.h>
 
 namespace {
 
@@ -545,8 +546,9 @@ int IsLocked(WorldSynthesizer *synth) {
 }
 
 int Synthesis2(WorldSynthesizer *synth) {
-  if (CheckSynthesizer(synth) == 0)
-    return 0;
+    if (CheckSynthesizer(synth) == 0){
+        return 0;
+    }
   for (int i = 0; i < synth->buffer_size + synth->fft_size; ++i)
     synth->buffer[i] = synth->buffer[i + synth->buffer_size];
 
