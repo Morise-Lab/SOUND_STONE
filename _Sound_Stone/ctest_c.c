@@ -546,3 +546,45 @@ void execute_Synthesis(WorldParameters world_parameters,const char* outputFile){
     printf("complete.\n");
 }
 
+WorldSynthesizer *synthesizer;
+WorldSynthesizer *Initializer(WorldParameters *world_parameters,int buffer_size){
+    printf("CALLLLL");
+    WorldSynthesizer *synth = malloc(sizeof(*synth));
+    InitializeSynthesizer(world_parameters->fs, world_parameters->frame_period,
+                          world_parameters->fft_size, buffer_size, 20, synth);
+    synthesizer = synth;
+    return synthesizer;
+}
+double* AddFrames(WorldParameters *world_parameters,int fs,
+               int start,int length, double *y,int buffer_size)
+{
+    int offset = 0;
+    int index = 0;
+    for (int i = start; i < start+length;) {
+        
+        
+        // Add one frame (i shows the frame index that should be added)
+        if (AddParameters(&world_parameters->f0[i], 1,
+                          &world_parameters->spectrogram[i], &world_parameters->aperiodicity[i],
+                          synthesizer) == 1){
+            ++i;
+        }
+        // Synthesize speech with length of buffer_size sample.
+        // It is repeated until the function returns 0
+        // (it suggests that the synthesizer cannot generate speech).
+        while (Synthesis2(synthesizer) != 0) {
+            index = offset * buffer_size;
+            for (int j = 0; j < buffer_size; ++j){
+                y[j + index] = synthesizer->buffer[j];
+            }
+            offset++;
+        }
+        
+        // Check the "Lock" (Please see synthesisrealtime.h)
+        if (IsLocked(synthesizer) == 1) {
+            break;
+        }
+    }
+    return synthesizer->buffer;
+}
+
