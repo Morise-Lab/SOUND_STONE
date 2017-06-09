@@ -27,8 +27,6 @@
 		3AC2FD171EE7E512002ED465 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD0A1EE7E512002ED465 /* world.cpp */; };
 		3AC2FD201EE7EEA5002ED465 /* sks in Resources */ = {isa = PBXBuildFile; fileRef = 3AC2FD1F1EE7EEA5002ED465 /* sks */; };
 		3AC2FD221EE7EF31002ED465 /* waves in Resources */ = {isa = PBXBuildFile; fileRef = 3AC2FD211EE7EF31002ED465 /* waves */; };
-		3AC2FD441EEA834D002ED465 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3AC2FD421EEA834D002ED465 /* LICENSE */; };
-		3AC2FD451EEA834D002ED465 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD431EEA834D002ED465 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +67,6 @@
 		3AC2FD0A1EE7E512002ED465 /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
 		3AC2FD1F1EE7EEA5002ED465 /* sks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sks; sourceTree = "<group>"; };
 		3AC2FD211EE7EF31002ED465 /* waves */ = {isa = PBXFileReference; lastKnownFileType = folder; path = waves; sourceTree = "<group>"; };
-		3AC2FD421EEA834D002ED465 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		3AC2FD431EEA834D002ED465 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +142,6 @@
 		3A543EAE1DB6197000AD1C0F /* SOUND_STONE */ = {
 			isa = PBXGroup;
 			children = (
-				3AC2FD421EEA834D002ED465 /* LICENSE */,
-				3AC2FD431EEA834D002ED465 /* README.md */,
 				3AC2FD211EE7EF31002ED465 /* waves */,
 				3AC2FD1F1EE7EEA5002ED465 /* sks */,
 				3A03008C1DB6368900D909AC /* SOUND_STONE-Bridging-Header.h */,
@@ -231,7 +225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC2FD441EEA834D002ED465 /* LICENSE in Resources */,
 				3A543EBA1DB6197000AD1C0F /* LaunchScreen.storyboard in Resources */,
 				3A543EB71DB6197000AD1C0F /* Assets.xcassets in Resources */,
 				3A543EB51DB6197000AD1C0F /* Main.storyboard in Resources */,
@@ -259,7 +252,6 @@
 				3AC2FD0B1EE7E512002ED465 /* audioio.cpp in Sources */,
 				3AC2FD101EE7E512002ED465 /* d4c.cpp in Sources */,
 				3AC2FD0E1EE7E512002ED465 /* ctest_c.c in Sources */,
-				3AC2FD451EEA834D002ED465 /* README.md in Sources */,
 				3A543EB01DB6197000AD1C0F /* AppDelegate.swift in Sources */,
 				3AC2FD0D1EE7E512002ED465 /* common.cpp in Sources */,
 			);
