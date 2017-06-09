@@ -62,25 +62,6 @@ DWORD timeGetTime() {
 }
 #endif
 
-//-----------------------------------------------------------------------------
-// struct for WORLD
-// This struct is an option.
-// Users are NOT forced to use this struct.
-//-----------------------------------------------------------------------------
-/*
- typedef struct {
- double frame_period;
- int fs;
- 
- double *f0;
- double *time_axis;
- int f0_length;
- 
- double **spectrogram;
- double **aperiodicity;
- int fft_size;
- } WorldParameters;
- */
 static void DisplayInformation(int fs, int nbit, int x_length) {
     printf("File information\n");
     printf("Sampling : %d Hz %d Bit\n", fs, nbit);
