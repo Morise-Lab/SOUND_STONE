@@ -75,7 +75,6 @@ class  ViewController: UIViewController {
     var syntheIndex:Int32 = 0           //合成するxIndex (=tapIndex + startIndex)
     var preIndex:CGFloat = 0.0          //直前にタップしていたxIndex
     var preY:CGFloat = 0.0              //直前にタップしていたY座標
-    var f0Length = 0                    //音声のf0Arrayの長さ
     var canSynthe = false               //合成タイミングフラグ
     var xAxisMargin:CGFloat = 0.0       //xIndexの座標Margin
     let F0MinValue:CGFloat = 40.0      //操作の最低の基本周波数は40 [Hz]まで
@@ -107,8 +106,9 @@ class  ViewController: UIViewController {
         //WORLDの初期化
         InitializeWorldParameter(wavName: "vaiueo2d")
         
+        let F0Length = Int((world_parameter?.f0_length)!)
         //分析されたf0に従って画面上に声の高さを描画
-        DrawLineF0(arr: f0Array,count: f0Length)
+        DrawLineF0(arr: f0Array,count: F0Length)
         
         //リアルタイム音声合成のための初期化と合成音声synthe.wavの生成
         execute_Synthesis(world_parameter!,ToPath+"/synthe.wav")
@@ -418,7 +418,7 @@ class  ViewController: UIViewController {
         Initializer(&world_parameter!,Int32(BufferSize))
         
         
-        f0Length = Int((world_parameter?.f0_length)!)
+        let f0Length = Int((world_parameter?.f0_length)!)
         f0Array = []
         for i in 0 ..< f0Length{
             f0Array.append(CGFloat(world_parameter!.f0[i]))
@@ -514,9 +514,10 @@ class  ViewController: UIViewController {
         MoveParticle(x: location2.x,y: location2.y, moveSpeed: ParticleMoveSpeed)
         tapIndex = location2.x / xAxisMargin
         
+        let F0Length = Int((world_parameter?.f0_length)!)
         //indexが枠外に出たらギリギリで止める
-        if tapIndex >= CGFloat(f0Length - f0Start){
-            tapIndex = CGFloat(f0Length - f0Start) - 1
+        if tapIndex >= CGFloat(F0Length - f0Start){
+            tapIndex = CGFloat(F0Length - f0Start) - 1
         }
         var y = location2.y
         if(y < F0MinValue){
@@ -643,7 +644,8 @@ class  ViewController: UIViewController {
     //指定したPathの音声を読み込み再生する
     func LoadWavFromPath(path:String){
         InitializeWorldParameter(wavName: path)
-        DrawLineF0(arr: f0Array,count: f0Length)
+        let F0Length = Int((world_parameter?.f0_length)!)
+        DrawLineF0(arr: f0Array,count: F0Length)
         execute_Synthesis(world_parameter!,ToPath+"/synthe.wav")
         let syntheFile = try! AVAudioFile(forReading:URL(string:ToPath+"/synthe.wav")!)
         try! syntheFile.read(into: buffer,frameCount: AVAudioFrameCount(FrameCapacity))
