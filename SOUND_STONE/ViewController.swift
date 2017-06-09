@@ -92,7 +92,9 @@ class  ViewController: UIViewController {
     @IBOutlet weak var maleButton: UIButton!
 
     var femaleCnt:Int = 0               //現在再生中の女性発話者番号
-
+    
+    var logoImageView: UIImageView!
+    var backgroundImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         //Initialize処理
