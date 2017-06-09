@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A543EB01DB6197000AD1C0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */; };
+		3A543EB21DB6197000AD1C0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A543EB11DB6197000AD1C0F /* ViewController.swift */; };
+		3A543EB51DB6197000AD1C0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A543EB31DB6197000AD1C0F /* Main.storyboard */; };
+		3A543EB71DB6197000AD1C0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A543EB61DB6197000AD1C0F /* Assets.xcassets */; };
+		3A543EBA1DB6197000AD1C0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A543EB81DB6197000AD1C0F /* LaunchScreen.storyboard */; };
+		3AB99CCA1EB322EE00F6DFC0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB99CC91EB322EE00F6DFC0 /* AVFoundation.framework */; };
+		3AC2FD0B1EE7E512002ED465 /* audioio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FCFE1EE7E512002ED465 /* audioio.cpp */; };
+		3AC2FD0C1EE7E512002ED465 /* cheaptrick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FCFF1EE7E512002ED465 /* cheaptrick.cpp */; };
+		3AC2FD0D1EE7E512002ED465 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD001EE7E512002ED465 /* common.cpp */; };
+		3AC2FD0E1EE7E512002ED465 /* ctest_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD011EE7E512002ED465 /* ctest_c.c */; };
+		3AC2FD101EE7E512002ED465 /* d4c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD031EE7E512002ED465 /* d4c.cpp */; };
+		3AC2FD111EE7E512002ED465 /* dio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD041EE7E512002ED465 /* dio.cpp */; };
+		3AC2FD121EE7E512002ED465 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD051EE7E512002ED465 /* fft.cpp */; };
+		3AC2FD131EE7E512002ED465 /* matlabfunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD061EE7E512002ED465 /* matlabfunctions.cpp */; };
+		3AC2FD141EE7E512002ED465 /* stonemask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD071EE7E512002ED465 /* stonemask.cpp */; };
+		3AC2FD151EE7E512002ED465 /* synthesis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD081EE7E512002ED465 /* synthesis.cpp */; };
+		3AC2FD161EE7E512002ED465 /* synthesisrealtime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD091EE7E512002ED465 /* synthesisrealtime.cpp */; };
+		3AC2FD171EE7E512002ED465 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD0A1EE7E512002ED465 /* world.cpp */; };
+		3AC2FD201EE7EEA5002ED465 /* sks in Resources */ = {isa = PBXBuildFile; fileRef = 3AC2FD1F1EE7EEA5002ED465 /* sks */; };
+		3AC2FD221EE7EF31002ED465 /* waves in Resources */ = {isa = PBXBuildFile; fileRef = 3AC2FD211EE7EF31002ED465 /* waves */; };
+		3AC2FD441EEA834D002ED465 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3AC2FD421EEA834D002ED465 /* LICENSE */; };
+		3AC2FD451EEA834D002ED465 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2FD431EEA834D002ED465 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3A03008C1DB6368900D909AC /* SOUND_STONE-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SOUND_STONE-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A03008E1DB6E2CC00D909AC /* ctest_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ctest_c.h; path = header/ctest_c.h; sourceTree = "<group>"; };
+		3A3E11371DB6204100075808 /* cheaptrick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cheaptrick.h; path = header/cheaptrick.h; sourceTree = "<group>"; };
+		3A3E11381DB6204100075808 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = header/common.h; sourceTree = "<group>"; };
+		3A3E11391DB6204100075808 /* constantnumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constantnumbers.h; path = header/constantnumbers.h; sourceTree = "<group>"; };
+		3A3E113A1DB6204100075808 /* d4c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = d4c.h; path = header/d4c.h; sourceTree = "<group>"; };
+		3A3E113B1DB6204100075808 /* dio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dio.h; path = header/dio.h; sourceTree = "<group>"; };
+		3A3E113C1DB6204100075808 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fft.h; path = header/fft.h; sourceTree = "<group>"; };
+		3A3E113D1DB6204100075808 /* macrodefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macrodefinitions.h; path = header/macrodefinitions.h; sourceTree = "<group>"; };
+		3A3E113E1DB6204100075808 /* matlabfunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = matlabfunctions.h; path = header/matlabfunctions.h; sourceTree = "<group>"; };
+		3A3E113F1DB6204100075808 /* stonemask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stonemask.h; path = header/stonemask.h; sourceTree = "<group>"; };
+		3A3E11401DB6204100075808 /* synthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = synthesis.h; path = header/synthesis.h; sourceTree = "<group>"; };
+		3A3E11411DB6204100075808 /* synthesisrealtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = synthesisrealtime.h; path = header/synthesisrealtime.h; sourceTree = "<group>"; };
+		3A3E11431DB6206200075808 /* audioio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audioio.h; path = header/audioio.h; sourceTree = "<group>"; };
+		3A3E11541DB6206200075808 /* world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = world.h; path = _Sound_Stone2/world/header/world.h; sourceTree = SOURCE_ROOT; };
+		3A543EAC1DB6197000AD1C0F /* SOUND_STONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOUND_STONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3A543EB11DB6197000AD1C0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A543EB41DB6197000AD1C0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A543EB61DB6197000AD1C0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A543EB91DB6197000AD1C0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3A543EBB1DB6197000AD1C0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AB99CC91EB322EE00F6DFC0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3AC2FCFE1EE7E512002ED465 /* audioio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audioio.cpp; sourceTree = "<group>"; };
+		3AC2FCFF1EE7E512002ED465 /* cheaptrick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cheaptrick.cpp; sourceTree = "<group>"; };
+		3AC2FD001EE7E512002ED465 /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		3AC2FD011EE7E512002ED465 /* ctest_c.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctest_c.c; sourceTree = "<group>"; };
+		3AC2FD031EE7E512002ED465 /* d4c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = d4c.cpp; sourceTree = "<group>"; };
+		3AC2FD041EE7E512002ED465 /* dio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dio.cpp; sourceTree = "<group>"; };
+		3AC2FD051EE7E512002ED465 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
+		3AC2FD061EE7E512002ED465 /* matlabfunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matlabfunctions.cpp; sourceTree = "<group>"; };
+		3AC2FD071EE7E512002ED465 /* stonemask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stonemask.cpp; sourceTree = "<group>"; };
+		3AC2FD081EE7E512002ED465 /* synthesis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synthesis.cpp; sourceTree = "<group>"; };
+		3AC2FD091EE7E512002ED465 /* synthesisrealtime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synthesisrealtime.cpp; sourceTree = "<group>"; };
+		3AC2FD0A1EE7E512002ED465 /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
+		3AC2FD1F1EE7EEA5002ED465 /* sks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sks; sourceTree = "<group>"; };
+		3AC2FD211EE7EF31002ED465 /* waves */ = {isa = PBXFileReference; lastKnownFileType = folder; path = waves; sourceTree = "<group>"; };
+		3AC2FD421EEA834D002ED465 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		3AC2FD431EEA834D002ED465 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A543EA91DB6197000AD1C0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB99CCA1EB322EE00F6DFC0 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A301A901EE7DE74008AD59B /* header */ = {
+			isa = PBXGroup;
+			children = (
+				3A3E11541DB6206200075808 /* world.h */,
+				3A3E11431DB6206200075808 /* audioio.h */,
+				3A03008E1DB6E2CC00D909AC /* ctest_c.h */,
+				3A3E11371DB6204100075808 /* cheaptrick.h */,
+				3A3E11381DB6204100075808 /* common.h */,
+				3A3E11391DB6204100075808 /* constantnumbers.h */,
+				3A3E113A1DB6204100075808 /* d4c.h */,
+				3A3E113B1DB6204100075808 /* dio.h */,
+				3A3E113C1DB6204100075808 /* fft.h */,
+				3A3E113D1DB6204100075808 /* macrodefinitions.h */,
+				3A3E113E1DB6204100075808 /* matlabfunctions.h */,
+				3A3E113F1DB6204100075808 /* stonemask.h */,
+				3A3E11401DB6204100075808 /* synthesis.h */,
+				3A3E11411DB6204100075808 /* synthesisrealtime.h */,
+			);
+			name = header;
+			sourceTree = "<group>";
+		};
+		3A3E11361DB6204100075808 /* world */ = {
+			isa = PBXGroup;
+			children = (
+				3AC2FCFE1EE7E512002ED465 /* audioio.cpp */,
+				3AC2FCFF1EE7E512002ED465 /* cheaptrick.cpp */,
+				3AC2FD001EE7E512002ED465 /* common.cpp */,
+				3AC2FD011EE7E512002ED465 /* ctest_c.c */,
+				3AC2FD031EE7E512002ED465 /* d4c.cpp */,
+				3AC2FD041EE7E512002ED465 /* dio.cpp */,
+				3AC2FD051EE7E512002ED465 /* fft.cpp */,
+				3AC2FD061EE7E512002ED465 /* matlabfunctions.cpp */,
+				3AC2FD071EE7E512002ED465 /* stonemask.cpp */,
+				3AC2FD081EE7E512002ED465 /* synthesis.cpp */,
+				3AC2FD091EE7E512002ED465 /* synthesisrealtime.cpp */,
+				3AC2FD0A1EE7E512002ED465 /* world.cpp */,
+				3A301A901EE7DE74008AD59B /* header */,
+			);
+			path = world;
+			sourceTree = "<group>";
+		};
+		3A543EA31DB6197000AD1C0F = {
+			isa = PBXGroup;
+			children = (
+				3A543EAE1DB6197000AD1C0F /* SOUND_STONE */,
+				3A543EAD1DB6197000AD1C0F /* Products */,
+				3AC804C31E5A9B9A00741BF9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3A543EAD1DB6197000AD1C0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A543EAC1DB6197000AD1C0F /* SOUND_STONE.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A543EAE1DB6197000AD1C0F /* SOUND_STONE */ = {
+			isa = PBXGroup;
+			children = (
+				3AC2FD421EEA834D002ED465 /* LICENSE */,
+				3AC2FD431EEA834D002ED465 /* README.md */,
+				3AC2FD211EE7EF31002ED465 /* waves */,
+				3AC2FD1F1EE7EEA5002ED465 /* sks */,
+				3A03008C1DB6368900D909AC /* SOUND_STONE-Bridging-Header.h */,
+				3A3E11361DB6204100075808 /* world */,
+				3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */,
+				3A543EB11DB6197000AD1C0F /* ViewController.swift */,
+				3A543EB31DB6197000AD1C0F /* Main.storyboard */,
+				3A543EB61DB6197000AD1C0F /* Assets.xcassets */,
+				3A543EB81DB6197000AD1C0F /* LaunchScreen.storyboard */,
+				3A543EBB1DB6197000AD1C0F /* Info.plist */,
+			);
+			path = SOUND_STONE;
+			sourceTree = "<group>";
+		};
+		3AC804C31E5A9B9A00741BF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AB99CC91EB322EE00F6DFC0 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A543EAB1DB6197000AD1C0F /* SOUND_STONE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A543EBE1DB6197000AD1C0F /* Build configuration list for PBXNativeTarget "SOUND_STONE" */;
+			buildPhases = (
+				3A543EA81DB6197000AD1C0F /* Sources */,
+				3A543EA91DB6197000AD1C0F /* Frameworks */,
+				3A543EAA1DB6197000AD1C0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SOUND_STONE;
+			productName = _Sound_Stone;
+			productReference = 3A543EAC1DB6197000AD1C0F /* SOUND_STONE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A543EA41DB6197000AD1C0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Yusuke Watanabe";
+				TargetAttributes = {
+					3A543EAB1DB6197000AD1C0F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XBX9D3R87M;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3A543EA71DB6197000AD1C0F /* Build configuration list for PBXProject "SOUND_STONE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A543EA31DB6197000AD1C0F;
+			productRefGroup = 3A543EAD1DB6197000AD1C0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A543EAB1DB6197000AD1C0F /* SOUND_STONE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A543EAA1DB6197000AD1C0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC2FD441EEA834D002ED465 /* LICENSE in Resources */,
+				3A543EBA1DB6197000AD1C0F /* LaunchScreen.storyboard in Resources */,
+				3A543EB71DB6197000AD1C0F /* Assets.xcassets in Resources */,
+				3A543EB51DB6197000AD1C0F /* Main.storyboard in Resources */,
+				3AC2FD221EE7EF31002ED465 /* waves in Resources */,
+				3AC2FD201EE7EEA5002ED465 /* sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A543EA81DB6197000AD1C0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC2FD131EE7E512002ED465 /* matlabfunctions.cpp in Sources */,
+				3AC2FD111EE7E512002ED465 /* dio.cpp in Sources */,
+				3A543EB21DB6197000AD1C0F /* ViewController.swift in Sources */,
+				3AC2FD141EE7E512002ED465 /* stonemask.cpp in Sources */,
+				3AC2FD171EE7E512002ED465 /* world.cpp in Sources */,
+				3AC2FD121EE7E512002ED465 /* fft.cpp in Sources */,
+				3AC2FD0C1EE7E512002ED465 /* cheaptrick.cpp in Sources */,
+				3AC2FD151EE7E512002ED465 /* synthesis.cpp in Sources */,
+				3AC2FD161EE7E512002ED465 /* synthesisrealtime.cpp in Sources */,
+				3AC2FD0B1EE7E512002ED465 /* audioio.cpp in Sources */,
+				3AC2FD101EE7E512002ED465 /* d4c.cpp in Sources */,
+				3AC2FD0E1EE7E512002ED465 /* ctest_c.c in Sources */,
+				3AC2FD451EEA834D002ED465 /* README.md in Sources */,
+				3A543EB01DB6197000AD1C0F /* AppDelegate.swift in Sources */,
+				3AC2FD0D1EE7E512002ED465 /* common.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3A543EB31DB6197000AD1C0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A543EB41DB6197000AD1C0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3A543EB81DB6197000AD1C0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A543EB91DB6197000AD1C0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A543EBC1DB6197000AD1C0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = NO;
+				CLANG_WARN_ENUM_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = NO;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Debug;
+		};
+		3A543EBD1DB6197000AD1C0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = NO;
+				CLANG_WARN_ENUM_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = NO;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				ENABLE_TESTABILITY = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Release;
+		};
+		3A543EBF1DB6197000AD1C0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/SOUND_STONE/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "MoriseLab.SOUND-STONE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SOUND_STONE/SOUND_STONE-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		3A543EC01DB6197000AD1C0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/SOUND_STONE/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "MoriseLab.SOUND-STONE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SOUND_STONE/SOUND_STONE-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A543EA71DB6197000AD1C0F /* Build configuration list for PBXProject "SOUND_STONE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A543EBC1DB6197000AD1C0F /* Debug */,
+				3A543EBD1DB6197000AD1C0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A543EBE1DB6197000AD1C0F /* Build configuration list for PBXNativeTarget "SOUND_STONE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A543EBF1DB6197000AD1C0F /* Debug */,
+				3A543EC01DB6197000AD1C0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A543EA41DB6197000AD1C0F /* Project object */;
+}
