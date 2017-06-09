@@ -33,7 +33,7 @@
                                     <color key="titleColor" red="0.63921568630000003" green="0.71372549019999998" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="Tap_Male:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b6C-Ny-M2N"/>
+                                    <action selector="tap_Male:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hSI-L8-LMl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-JH-6YX">
@@ -44,7 +44,7 @@
                                     <color key="titleColor" red="0.63921568630000003" green="0.71372549019999998" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="Tap_Female:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ekJ-fa-8Gd"/>
+                                    <action selector="tap_Female:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XaF-bG-ZDa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0T-bb-RWd">
@@ -55,7 +55,7 @@
                                     <color key="titleColor" red="0.63921568630000003" green="0.71372549019999998" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="Tap_Replay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zu5-xh-6lY"/>
+                                    <action selector="tap_Replay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D85-qC-KO0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-1a-hvd">
@@ -66,8 +66,8 @@
                                     <color key="titleColor" red="0.63921568630000003" green="0.71372549019999998" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="TouchDown_Record:" destination="BYZ-38-t0r" eventType="touchDown" id="Eht-2Y-y5O"/>
-                                    <action selector="TouchUp_Record:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ciY-sJ-Ev2"/>
+                                    <action selector="touchDown_Record:" destination="BYZ-38-t0r" eventType="touchDown" id="qED-AQ-2np"/>
+                                    <action selector="touchUp_Record:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tuc-95-O3Q"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-Qv-1OY">

@@ -52,16 +52,16 @@ class  ViewController: UIViewController {
     //再生用PCMBuffer
     var buffer:AVAudioPCMBuffer!        //音声全体再生用バッファ
     var buffers:[AVAudioPCMBuffer] = [] //リアルタイム再生用バルチバッファ
-    let BufferCnt = 5                  //バッファ数(5が最小)
-    let BufferSize =  512              //バッファ単位のサイズ
-    var bufferNum = 0                  //現在再生中バッファの番号
-    var nextBufferNum = 1              //次に再生予定のバッファ番号 (事前にバッファを追加しておくため)
-    var syntheBufferNum = 2            //次の次に再生予定のバッファ番号 (バッファに追加する前に合成しておくため)
+    let BufferCnt = 5                   //バッファ数(5が最小)
+    let BufferSize =  512               //バッファ単位のサイズ
+    var bufferNum = 0                   //現在再生中バッファの番号
+    var nextBufferNum = 1               //次に再生予定のバッファ番号 (事前にバッファを追加しておくため)
+    var syntheBufferNum = 2             //次の次に再生予定のバッファ番号 (バッファに追加する前に合成しておくため)
     let FrameCapacity = 128000          //128000/16000 [s]まで許容
     
     //リアルタイム再生のためのタイマー
     var syntheTimer: Timer!             //事前合成用タイマー
-    var setBufferTimer: Timer!          //バッファに書き込むためのタイマー
+    var bufferPlayTimer: Timer!         //バッファに書き込むためのタイマー
     
     
     //---------録音機能関連変数----------
@@ -98,19 +98,19 @@ class  ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Initialize処理
-        InitializeView()
-        InitializeBuffer(cnt: BufferCnt)
+        initializeView()
+        initializeBuffer(cnt: BufferCnt)
         
         //エフェクト読み込み
         loadEffectData(particlePath: MaleStandPath!,shadowParticlePath: MaleShadowPath!)
         self.view.addSubview(standEffect!)
         
         //WORLDの初期化
-        InitializeWorldParameter(wavName: "vaiueo2d")
+        initializeWorldParameter(wavName: "vaiueo2d")
         
         let F0Length = Int((world_parameter?.f0_length)!)
         //分析されたf0に従って画面上に声の高さを描画
-        DrawLineF0(arr: f0Array,count: F0Length)
+        drawLineF0(arr: f0Array,count: F0Length)
         
         //リアルタイム音声合成のための初期化と合成音声synthe.wavの生成
         execute_Synthesis(world_parameter!,ToPath+"/synthe.wav")
@@ -123,7 +123,7 @@ class  ViewController: UIViewController {
         try! syntheFile.read(into: buffer,frameCount: AVAudioFrameCount(FrameCapacity))
         
         //Audio周りの初期化
-        InitializeAudio(file: syntheFile)
+        initializeAudio(file: syntheFile)
         //再生
         playerNode.scheduleBuffer(buffer,at:nil,options:AVAudioPlayerNodeBufferOptions.interrupts,completionHandler:nil)
     }
@@ -133,20 +133,21 @@ class  ViewController: UIViewController {
     //起動時、viewDidLoadのあとに呼び出し
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         //バッファ書き込みタイマーの設定
-        setBufferTimer = Timer.scheduledTimer(timeInterval: 0.032, target: self, selector: #selector(self.SetBufferTimer), userInfo: nil, repeats: true)
+        bufferPlayTimer = Timer.scheduledTimer(timeInterval: 0.032, target: self, selector: #selector(self.setBufferTimer), userInfo: nil, repeats: true)
         //着火
-        setBufferTimer.fire()
+        bufferPlayTimer.fire()
         
         //合成タイミング用タイマーの設定
-        syntheTimer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.SynthesisTimer), userInfo: nil, repeats: true)
+        syntheTimer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.synthesisTimer), userInfo: nil, repeats: true)
         //Bomb
         syntheTimer.fire()
     }
     //終了時、画面遷移時に呼び出し
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        setBufferTimer.invalidate()
+        bufferPlayTimer.invalidate()
         syntheTimer.invalidate()
     }
     
@@ -171,8 +172,8 @@ class  ViewController: UIViewController {
         //タップした位置にもとづいてF0変更・バッファに書き込み・再生とか行う
         for touch: AnyObject in touches{
             let location = touch.location(in:self.view)
-            ChangeF0FromTap(location: location)
-            SynthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
+            changeF0FromTap(location: location)
+            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
             syntheNode.scheduleBuffer(buffers[bufferNum],at:nil,completionHandler:nil)
         }
     }
@@ -183,7 +184,7 @@ class  ViewController: UIViewController {
         }
         for touch:AnyObject in touches{
             let location = touch.location(in:self.view)
-            ChangeF0FromTap(location: location)
+            changeF0FromTap(location: location)
         }
     }
     //指離した
@@ -191,13 +192,13 @@ class  ViewController: UIViewController {
         guard (!replayMode)else {
             return
         }
-        InitializePlayerParameter()
+        initializePlayerParameter()
     }
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard (!replayMode)else {
             return
         }
-        InitializePlayerParameter()
+        initializePlayerParameter()
     }
 
     //--------------------------
@@ -205,12 +206,12 @@ class  ViewController: UIViewController {
     //--------------------------
     
     //録音ボタン押した 録音開始
-    @IBAction func TouchDown_Record(_ sender: Any) {
-        InitializeRecording()
+    @IBAction func touchDown_Record(_ sender: Any) {
+        initializeRecording()
         self.audioRecorder.record()
     }
     //録音ボタン離した 録音ファイル保存
-    @IBAction func TouchUp_Record(_ sender: Any) {
+    @IBAction func touchUp_Record(_ sender: Any) {
         self.audioRecorder.stop()
         self.audioRecorder = nil
         
@@ -246,7 +247,7 @@ class  ViewController: UIViewController {
             }
             xAxisMargin = view.frame.width/CGFloat(f0Array.count)
             length = f0End-f0Start
-            DrawLineF0(arr: f0Array,count: length)
+            drawLineF0(arr: f0Array,count: length)
             execute_Synthesis(world_parameter!,ToPath+"/synthe.wav")
             //合成音声の読み込みと再生
             let syntheFile = try! AVAudioFile(forReading:URL(string:ToPath+"/synthe.wav")!)
@@ -264,21 +265,21 @@ class  ViewController: UIViewController {
     //----LoadVoiceFunction-----
     //--------------------------
     //女性発話の読み込み
-    @IBAction func Tap_Female(_ sender: Any) {
+    @IBAction func tap_Female(_ sender: Any) {
         replayIndexArray = []
         replayF0Array = []
         replayButton.isHighlighted = true
         let femalePath = getNextFemale()
         //複数回押すと女性発話が変わる(2音声だけ)
-        LoadWavFromPath(path: femalePath)
+        loadWavFromPath(path: femalePath)
         loadEffectData(particlePath: FeMaleStandPath!,shadowParticlePath: FemaleShadowPath!)
     }
     //男性発話の読み込み
-    @IBAction func Tap_Male(_ sender: Any) {
+    @IBAction func tap_Male(_ sender: Any) {
         replayIndexArray = []
         replayF0Array = []
         replayButton.isHighlighted = true
-        LoadWavFromPath(path: "vaiueo2d")
+        loadWavFromPath(path: "vaiueo2d")
         loadEffectData(particlePath: MaleStandPath!,shadowParticlePath: MaleShadowPath!)
     }
     
@@ -286,20 +287,20 @@ class  ViewController: UIViewController {
     //------ReplayFunction------
     //--------------------------
     //直前の一連操作において操作位置とF0を保存しておいたものを、現状のタイマー環境を用いて無理やり再現してるだけ
-    @IBAction func Tap_Replay(_ sender: Any) {
+    @IBAction func tap_Replay(_ sender: Any) {
         if replayIndexArray.count != 0{ //何かしら操作があったら
             replayMode = true           //Replay使えるよ！このMode変更によってSetBufferTimerの動きが変更
             
             //バッファ再生の構成上、予め最初のバッファは読み込んで再生する。
             syntheIndex = Int32(replayIndexArray[replayIndex]) + Int32(f0Start)
-            SynthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
+            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
             syntheNode.scheduleBuffer(buffers[bufferNum],at:nil,completionHandler:nil)
             replayIndex += 1
             
-            FuncAllTap(flag: false)
+            funcAllTap(flag: false)
             
             //Replay中だよ！って画面にフェードイン・フェードアウトしながら表示する豪華なエフェクト
-            ShowLabelWithAnimation(label: ReplayLabel)
+            showLabelWithAnimation(label: ReplayLabel)
         }
     }
     
@@ -308,18 +309,18 @@ class  ViewController: UIViewController {
     //--------------------------
 
     //すごい早く繰り返されるタイマーで、合成可能になったら大急ぎで合成してPCMBufferに一時保存する
-    func SynthesisTimer(tm: Timer) {
+    func synthesisTimer(tm: Timer) {
         if canSynthe{
-            SynthesisToBuffer(syntheIndex: syntheIndex, bufferNum: syntheBufferNum)
+            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: syntheBufferNum)
             canSynthe = false
         }
     }
 
     //BufferSizeに対応した速度で繰り返されるタイマーで、ちょうどいい素晴らしいタイミングで次のバッファを再生用のNodeに詰め込む
     //ここでは、リプレイモードか、操作モードかで大きく機構が分岐する
-    func SetBufferTimer(tm: Timer) {
+    func setBufferTimer(tm: Timer) {
         //リプレイモード時の動作
-        if CanReplay(replayMode: replayMode, replayIndexArray: replayIndexArray) {
+        if canReplay(replayMode: replayMode, replayIndexArray: replayIndexArray) {
             //次の合成していいよ
             canSynthe = true
             //次のバッファを再生用Nodeに末尾追加
@@ -329,7 +330,7 @@ class  ViewController: UIViewController {
             //その位置のF0worldParameterを操作時のf0に変えておく
             world_parameter?.f0[Int(syntheIndex)] = Double(replayF0Array[Int(replayIndex)]!)
             //再現位置にParticleを移動
-            MoveParticle(x: replayIndexArray[replayIndex] * xAxisMargin,y: replayF0Array[replayIndex]!, moveSpeed: ParticleMoveSpeed)
+            moveParticle(x: replayIndexArray[replayIndex] * xAxisMargin,y: replayF0Array[replayIndex]!, moveSpeed: ParticleMoveSpeed)
             //次のリプレイ位置へ加算
             replayIndex += 1
             
@@ -337,7 +338,7 @@ class  ViewController: UIViewController {
             if replayIndexArray.count == replayIndex{
                 replayIndex = 0
                 replayMode = false
-                FuncAllTap(flag:true)
+                funcAllTap(flag:true)
                 ReplayLabel.removeFromParent()
             }
         }else{
@@ -372,7 +373,7 @@ class  ViewController: UIViewController {
     //--------------------------
     
     //画面上の初期化
-    func InitializeView(){
+    func initializeView(){
         standEffect = SKView(frame:CGRect(x: 0, y: HeaderFooter, width: Int(self.view.frame.width), height: AllViewY-HeaderFooter*2))
         self.standScene = SKScene(size:CGSize(width:self.view.frame.width,height:CGFloat(AllViewY-HeaderFooter*2)))
         standEffect!.presentScene(standScene)
@@ -400,7 +401,7 @@ class  ViewController: UIViewController {
     }
     
     //再生用Bufferの初期化
-    func InitializeBuffer(cnt:Int){
+    func initializeBuffer(cnt:Int){
         for _ in 0 ..< cnt{
             let buff:AVAudioPCMBuffer = AVAudioPCMBuffer(pcmFormat:AudioFormat,frameCapacity:AVAudioFrameCount(BufferSize))
             buff.frameLength = AVAudioFrameCount(BufferSize)
@@ -409,7 +410,7 @@ class  ViewController: UIViewController {
     }
     
     //WorldParameterの初期化
-    func InitializeWorldParameter(wavName:String){
+    func initializeWorldParameter(wavName:String){
         f0Start = 0
         f0End = 0
         //分析フェーズ
@@ -429,7 +430,7 @@ class  ViewController: UIViewController {
     }
     
     //再生用のAVAudio周りの初期化
-    func InitializeAudio(file:AVAudioFile){
+    func initializeAudio(file:AVAudioFile){
         audioEngine = AVAudioEngine()
         playerNode = AVAudioPlayerNode()
         syntheNode = AVAudioPlayerNode()
@@ -445,7 +446,7 @@ class  ViewController: UIViewController {
     }
     
     //何かと初期化するときの便利なメソッド
-    func InitializePlayerParameter(){
+    func initializePlayerParameter(){
         tapIndex = 0.0
         bufferCleaner()
         bufferNum = 0
@@ -456,11 +457,11 @@ class  ViewController: UIViewController {
     }
     
     //録音機能における初期化
-    func InitializeRecording(){
+    func initializeRecording(){
         // 初期化ここから
         recordButton.isEnabled = false
         
-        ShowLabelWithAnimation(label: RecordLabel)
+        showLabelWithAnimation(label: RecordLabel)
         
         recordButton.isEnabled = true
         // 録音ファイルを指定する
@@ -503,17 +504,17 @@ class  ViewController: UIViewController {
     }
     
     //リプレイ可能かどうかの判定
-    func CanReplay(replayMode:Bool,replayIndexArray:[CGFloat]) -> Bool{
+    func canReplay(replayMode:Bool,replayIndexArray:[CGFloat]) -> Bool{
         return (replayMode && replayIndexArray.count != 0)
     }
     
     //タップ位置に対応してF0を変更する
-    func ChangeF0FromTap(location:CGPoint){
+    func changeF0FromTap(location:CGPoint){
         var location2 = CGPoint(x:location.x,y:self.view.frame.height - CGFloat(HeaderFooter) - location.y)
         if(location2.y < F0MinValue){
             location2.y = F0MinValue
         }
-        MoveParticle(x: location2.x,y: location2.y, moveSpeed: ParticleMoveSpeed)
+        moveParticle(x: location2.x,y: location2.y, moveSpeed: ParticleMoveSpeed)
         tapIndex = location2.x / xAxisMargin
         
         let F0Length = Int((world_parameter?.f0_length)!)
@@ -528,14 +529,14 @@ class  ViewController: UIViewController {
         
         let changeWidth = 1
         //触れている場所を検出し、f0配列の値を変える。WORLDParameterも変更する。
-        ChangeF0Line(y: y, changeWidth: changeWidth,tapIndex:Int(tapIndex))
+        changeF0Line(y: y, changeWidth: changeWidth,tapIndex:Int(tapIndex))
         
         preIndex = tapIndex
         preY = y
     }
     
     //F0操作時に点と点を結ぶ
-    func ChangeF0Line(y:CGFloat,changeWidth:Int,tapIndex:Int){
+    func changeF0Line(y:CGFloat,changeWidth:Int,tapIndex:Int){
         if(preIndex != 0.0)
         {
             var y1:CGFloat = 0
@@ -591,7 +592,7 @@ class  ViewController: UIViewController {
     }
     
     //flagに対応してボタンを押せるかどうかをまとめて変更
-    func FuncAllTap(flag:Bool){
+    func funcAllTap(flag:Bool){
         recordButton.isEnabled = flag
         femaleButton.isEnabled = flag
         maleButton.isEnabled = flag
@@ -599,7 +600,7 @@ class  ViewController: UIViewController {
     }
     
     //Particleを座標(x,y)にMoceSpeedの速さで移動させる
-    func MoveParticle(x:CGFloat,y:CGFloat,moveSpeed:Double){
+    func moveParticle(x:CGFloat,y:CGFloat,moveSpeed:Double){
         let action1 = SKAction.moveTo(x: x, duration: moveSpeed)
         let action2 = SKAction.moveTo(y: y, duration: moveSpeed)
         action1.timingMode = SKActionTimingMode.easeInEaseOut
@@ -629,7 +630,7 @@ class  ViewController: UIViewController {
     }
     
     //Recording!とかReplay!とかのラベルを豪華なアニメーションで再生してくれるメソッド
-    func ShowLabelWithAnimation(label:SKLabelNode){
+    func showLabelWithAnimation(label:SKLabelNode){
         label.fontName = "Snell Roundhand"
         label.position = CGPoint(x:standScene!.size.width / 4 * 2,y:(standScene?.size.height)! / 2)
         label.fontColor  = SKColor.darkGray
@@ -644,10 +645,10 @@ class  ViewController: UIViewController {
     }
     
     //指定したPathの音声を読み込み再生する
-    func LoadWavFromPath(path:String){
-        InitializeWorldParameter(wavName: path)
+    func loadWavFromPath(path:String){
+        initializeWorldParameter(wavName: path)
         let F0Length = Int((world_parameter?.f0_length)!)
-        DrawLineF0(arr: f0Array,count: F0Length)
+        drawLineF0(arr: f0Array,count: F0Length)
         execute_Synthesis(world_parameter!,ToPath+"/synthe.wav")
         let syntheFile = try! AVAudioFile(forReading:URL(string:ToPath+"/synthe.wav")!)
         try! syntheFile.read(into: buffer,frameCount: AVAudioFrameCount(FrameCapacity))
@@ -684,7 +685,7 @@ class  ViewController: UIViewController {
     }
     
     //画面上にF0の線分を表示
-    func DrawLineF0(arr:[CGFloat?],count:Int){
+    func drawLineF0(arr:[CGFloat?],count:Int){
         F0Line.removeFromParent()
         let path = CGMutablePath()
         for i in 0 ..< count-1{
@@ -699,7 +700,7 @@ class  ViewController: UIViewController {
     }
     
     //指定座標の合成音声を指定バッファへ書き込み
-    func SynthesisToBuffer(syntheIndex:Int32,bufferNum:Int){
+    func synthesisToBuffer(syntheIndex:Int32,bufferNum:Int){
         //WORLDで合成したPCM配列を取得するための配列の定義
         let resultSynthesis_ptr = UnsafeMutablePointer<Double>.allocate(capacity:BufferSize)
         let res = Int(AddFrames(&world_parameter!,(world_parameter?.fs)!,syntheIndex,Int32(Int(BufferSize)),resultSynthesis_ptr,Int32(BufferSize),0))
