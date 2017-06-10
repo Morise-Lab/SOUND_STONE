@@ -161,13 +161,8 @@ class  ViewController: UIViewController {
         guard (!replayMode)else {
             return
         }
-        //再生開始するからもう合成していいよ
-        canSynthe = true
-        //タップ開始時にリプレイに関する配列は初期化
-        replayIndexArray = []
-        replayF0Array = []
-        //少しでも操作すればリプレイ機能使えます
-        replayButton.isHighlighted = false
+        removeReplayParameter()
+        
         
         //タップした位置にもとづいてF0変更・バッファに書き込み・再生とか行う
         for touch: AnyObject in touches{
@@ -176,6 +171,8 @@ class  ViewController: UIViewController {
             synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
             syntheNode.scheduleBuffer(buffers[bufferNum],at:nil,completionHandler:nil)
         }
+        //再生開始するからもう合成していいよ
+        canSynthe = true
     }
     //Swipe
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -231,9 +228,7 @@ class  ViewController: UIViewController {
             Initializer(&wp,Int32(BufferSize))
             f0Start = 0
             f0End = 0
-            replayIndexArray = []
-            replayF0Array = []
-            replayButton.isHighlighted = true
+            removeReplayParameter()
             //----------------
             
             world_parameter = wp
@@ -266,9 +261,8 @@ class  ViewController: UIViewController {
     //--------------------------
     //女性発話の読み込み
     @IBAction func tap_Female(_ sender: Any) {
-        replayIndexArray = []
-        replayF0Array = []
-        replayButton.isHighlighted = true
+        removeReplayParameter()
+        initializePlayerParameter()
         let femalePath = getNextFemale()
         //複数回押すと女性発話が変わる(2音声だけ)
         loadWavFromPath(path: femalePath)
@@ -276,9 +270,8 @@ class  ViewController: UIViewController {
     }
     //男性発話の読み込み
     @IBAction func tap_Male(_ sender: Any) {
-        replayIndexArray = []
-        replayF0Array = []
-        replayButton.isHighlighted = true
+        removeReplayParameter()
+        initializePlayerParameter()
         loadWavFromPath(path: "vaiueo2d")
         loadEffectData(particlePath: MaleStandPath!,shadowParticlePath: MaleShadowPath!)
     }
@@ -311,8 +304,8 @@ class  ViewController: UIViewController {
     //すごい早く繰り返されるタイマーで、合成可能になったら大急ぎで合成してPCMBufferに一時保存する
     func synthesisTimer(tm: Timer) {
         if canSynthe{
-            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: syntheBufferNum)
             canSynthe = false
+            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: syntheBufferNum)
         }
     }
 
@@ -321,8 +314,6 @@ class  ViewController: UIViewController {
     func setBufferTimer(tm: Timer) {
         //リプレイモード時の動作
         if canReplay(replayMode: replayMode, replayIndexArray: replayIndexArray) {
-            //次の合成していいよ
-            canSynthe = true
             //次のバッファを再生用Nodeに末尾追加
             syntheNode.scheduleBuffer(buffers[nextBufferNum],at:nil,completionHandler:nil)
             //次の合成位置を格納しておく
@@ -334,6 +325,8 @@ class  ViewController: UIViewController {
             //次のリプレイ位置へ加算
             replayIndex += 1
             
+            //次の合成していいよ
+            canSynthe = true
             //リプレイ終了時の処理
             if replayIndexArray.count == replayIndex{
                 replayIndex = 0
@@ -344,8 +337,6 @@ class  ViewController: UIViewController {
         }else{
         //操作モード時の動作
             if tapIndex != 0.0{ //どこかタップしていたら
-                //次の合成していいよ
-                canSynthe = true
                 //次のバッファを再生用Nodeに末尾追加
                 syntheNode.scheduleBuffer(buffers[nextBufferNum],at:nil,completionHandler:nil)
                 //合成位置を格納
@@ -355,6 +346,8 @@ class  ViewController: UIViewController {
                 replayIndexArray.append(tapIndex)
                 replayF0Array.append(f0Array[Int(tapIndex)])
                 
+                //次の合成していいよ
+                canSynthe = true
             }
         }
         //次のバッファの設定
@@ -447,8 +440,10 @@ class  ViewController: UIViewController {
     
     //何かと初期化するときの便利なメソッド
     func initializePlayerParameter(){
-        tapIndex = 0.0
         bufferCleaner()
+        tapIndex = 0.0
+        canSynthe = false
+        syntheIndex = 0
         bufferNum = 0
         nextBufferNum = 1
         syntheBufferNum = 2
@@ -514,6 +509,7 @@ class  ViewController: UIViewController {
         if(location2.y < F0MinValue){
             location2.y = F0MinValue
         }
+        
         moveParticle(x: location2.x,y: location2.y, moveSpeed: ParticleMoveSpeed)
         tapIndex = location2.x / xAxisMargin
         
@@ -522,6 +518,9 @@ class  ViewController: UIViewController {
         if tapIndex >= CGFloat(F0Length - f0Start){
             tapIndex = CGFloat(F0Length - f0Start) - 1
         }
+        
+        syntheIndex = Int32(tapIndex + CGFloat(f0Start))
+        
         var y = location2.y
         if(y < F0MinValue){
             y = F0MinValue
@@ -601,19 +600,22 @@ class  ViewController: UIViewController {
     
     //Particleを座標(x,y)にMoceSpeedの速さで移動させる
     func moveParticle(x:CGFloat,y:CGFloat,moveSpeed:Double){
-        let action1 = SKAction.moveTo(x: x, duration: moveSpeed)
-        let action2 = SKAction.moveTo(y: y, duration: moveSpeed)
-        action1.timingMode = SKActionTimingMode.easeInEaseOut
-        action2.timingMode = SKActionTimingMode.easeInEaseOut
+        let ShadowMargin = CGPoint(x:10,y:-15)
         
-        let action3 = SKAction.moveTo(x: x + 10, duration: moveSpeed)
-        let action4 = SKAction.moveTo(y: y - 15, duration: moveSpeed)
-        action3.timingMode = SKActionTimingMode.easeInEaseOut
-        action4.timingMode = SKActionTimingMode.easeInEaseOut
-        shadow.run(action3)
-        shadow.run(action4)
-        particle.run(action1)
-        particle.run(action2)
+        let XMoveAction = SKAction.moveTo(x: x, duration: moveSpeed)
+        let YMoveAction = SKAction.moveTo(y: y, duration: moveSpeed)
+        XMoveAction.timingMode = SKActionTimingMode.easeInEaseOut
+        YMoveAction.timingMode = SKActionTimingMode.easeInEaseOut
+        
+        let ShadowXMoveAction = SKAction.moveTo(x: x + ShadowMargin.x, duration: moveSpeed)
+        let ShadowYMoveAction = SKAction.moveTo(y: y + ShadowMargin.y, duration: moveSpeed)
+        ShadowXMoveAction.timingMode = SKActionTimingMode.easeInEaseOut
+        ShadowYMoveAction.timingMode = SKActionTimingMode.easeInEaseOut
+        
+        particle.run(XMoveAction)
+        particle.run(YMoveAction)
+        shadow.run(ShadowXMoveAction)
+        shadow.run(ShadowYMoveAction)
     }
     
     //次の女性発話者のファイル名を取得
@@ -716,5 +718,10 @@ class  ViewController: UIViewController {
         else{
             print("Synthesis is missed")
         }
+    }
+    func removeReplayParameter(){
+        replayIndexArray = []
+        replayF0Array = []
+        replayButton.isHighlighted = true
     }
 }

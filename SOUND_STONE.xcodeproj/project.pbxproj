@@ -44,7 +44,7 @@
 		3A3E11401DB6204100075808 /* synthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = synthesis.h; path = header/synthesis.h; sourceTree = "<group>"; };
 		3A3E11411DB6204100075808 /* synthesisrealtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = synthesisrealtime.h; path = header/synthesisrealtime.h; sourceTree = "<group>"; };
 		3A3E11431DB6206200075808 /* audioio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audioio.h; path = header/audioio.h; sourceTree = "<group>"; };
-		3A3E11541DB6206200075808 /* world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = world.h; path = _Sound_Stone2/world/header/world.h; sourceTree = SOURCE_ROOT; };
+		3A3E11541DB6206200075808 /* world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = world.h; path = ../../VowelsMorphing/VowelsMorphing/VowelsMorphing/world/header/world.h; sourceTree = SOURCE_ROOT; };
 		3A543EAC1DB6197000AD1C0F /* SOUND_STONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOUND_STONE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A543EAF1DB6197000AD1C0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A543EB11DB6197000AD1C0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
