@@ -162,7 +162,7 @@ class  ViewController: UIViewController {
             return
         }
         removeReplayParameter()
-        
+        replayButton.isHighlighted = false
         
         //タップした位置にもとづいてF0変更・バッファに書き込み・再生とか行う
         for touch: AnyObject in touches{
