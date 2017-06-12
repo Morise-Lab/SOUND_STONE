@@ -168,8 +168,6 @@ class  ViewController: UIViewController {
         for touch: AnyObject in touches{
             let location = touch.location(in:self.view)
             changeF0FromTap(location: location)
-            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
-            syntheNode.scheduleBuffer(buffers[bufferNum],at:nil,completionHandler:nil)
         }
         //再生開始するからもう合成していいよ
         canSynthe = true
@@ -286,8 +284,8 @@ class  ViewController: UIViewController {
             
             //バッファ再生の構成上、予め最初のバッファは読み込んで再生する。
             syntheIndex = Int32(replayIndexArray[replayIndex]) + Int32(f0Start)
-            synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
-            syntheNode.scheduleBuffer(buffers[bufferNum],at:nil,completionHandler:nil)
+            //synthesisToBuffer(syntheIndex: syntheIndex, bufferNum: bufferNum)
+            //syntheNode.scheduleBuffer(buffers[bufferNum],at:nil,completionHandler:nil)
             replayIndex += 1
             
             funcAllTap(flag: false)
@@ -331,14 +329,14 @@ class  ViewController: UIViewController {
             if replayIndexArray.count == replayIndex{
                 replayIndex = 0
                 replayMode = false
+                tapIndex = 0.0
                 funcAllTap(flag:true)
                 ReplayLabel.removeFromParent()
+                initializePlayerParameter()
             }
         }else{
         //操作モード時の動作
             if tapIndex != 0.0{ //どこかタップしていたら
-                //次のバッファを再生用Nodeに末尾追加
-                syntheNode.scheduleBuffer(buffers[nextBufferNum],at:nil,completionHandler:nil)
                 //合成位置を格納
                 syntheIndex = Int32(tapIndex + CGFloat(f0Start))
                 
@@ -346,9 +344,11 @@ class  ViewController: UIViewController {
                 replayIndexArray.append(tapIndex)
                 replayF0Array.append(f0Array[Int(tapIndex)])
                 
-                //次の合成していいよ
-                canSynthe = true
             }
+            //次のバッファを再生用Nodeに末尾追加
+            syntheNode.scheduleBuffer(buffers[nextBufferNum],at:nil,completionHandler:nil)
+            //次の合成していいよ
+            canSynthe = true
         }
         //次のバッファの設定
         bufferNum=(bufferNum+1)%BufferCnt
@@ -441,13 +441,13 @@ class  ViewController: UIViewController {
     
     //何かと初期化するときの便利なメソッド
     func initializePlayerParameter(){
-        bufferCleaner()
+        //bufferCleaner()
         tapIndex = 0.0
-        canSynthe = false
+        //canSynthe = false
         syntheIndex = 0
-        bufferNum = 0
-        nextBufferNum = 1
-        syntheBufferNum = 2
+        //bufferNum = 0
+        //nextBufferNum = 1
+        //syntheBufferNum = 2
         preIndex = 0.0
         preY = 0.0
     }
@@ -537,8 +537,8 @@ class  ViewController: UIViewController {
     
     //F0操作時に点と点を結ぶ
     func changeF0Line(y:CGFloat,changeWidth:Int,tapIndex:Int){
-        if(preIndex != 0.0)
-        {
+        //if(preIndex != 0.0)
+        //{
             var y1:CGFloat = 0
             var y2:CGFloat = 0
             var x1:Int = 0
@@ -576,7 +576,7 @@ class  ViewController: UIViewController {
                     }
                 }
             }
-        }
+        //}
         for i in 0..<changeWidth {
             if tapIndex + i < f0Array.count {
                 f0Array.remove(at: Int(tapIndex)+i)
