@@ -8,6 +8,9 @@ SOUND STONEは、音声を用いた新たな電子楽器です。
 Swift3.1によって実装されており、ソースコードは修正BSDライセンスです。
 開発環境は、XCode 8.3.2、iPad Pro 9.7 inchです。
 
+
+本アプリにおける「リアルタイム音声合成し、再生される機構」のみ実装した[プログラム](https://github.com/g16tk018/RealtimeWORLDPlayer)もあります。
+
 ## 使い方
 本アプリの概要は以下です。
 
