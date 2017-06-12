@@ -430,6 +430,7 @@ class  ViewController: UIViewController {
         audioEngine.attach(playerNode)
         audioEngine.attach(syntheNode)
         let mixer = audioEngine.mainMixerNode
+        
         audioEngine.connect(playerNode,to: mixer, format:file.processingFormat)
         audioEngine.connect(syntheNode,to: mixer, format:AudioFormat)
         audioEngine.prepare()
@@ -656,6 +657,7 @@ class  ViewController: UIViewController {
         try! syntheFile.read(into: buffer,frameCount: AVAudioFrameCount(FrameCapacity))
         playerNode.scheduleBuffer(buffer,at:nil,options:AVAudioPlayerNodeBufferOptions.interrupts,completionHandler:nil)
     }
+    
     
     //WorldParameterからF0の開始Indexを取得
     func getStartIndexFromWorldParameter(length:Int)->Int{
