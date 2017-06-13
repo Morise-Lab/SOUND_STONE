@@ -343,7 +343,6 @@ class  ViewController: UIViewController {
                 //Replay時のためにIndexとF0を保存
                 replayIndexArray.append(tapIndex)
                 replayF0Array.append(f0Array[Int(tapIndex)])
-                
             }
             //次のバッファを再生用Nodeに末尾追加
             syntheNode.scheduleBuffer(buffers[nextBufferNum],at:nil,completionHandler:nil)
@@ -467,7 +466,8 @@ class  ViewController: UIViewController {
         
         // 再生と録音の機能をアクティブにする
         let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord,mode:AVAudioSessionModeDefault,options:AVAudioSessionCategoryOptions.allowBluetoothA2DP)
+        //try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         try! session.setActive(true)
         
         // 録音の詳細設定
